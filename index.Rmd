@@ -1,0 +1,379 @@
+---
+title: "Reproducibility in Science: A Statistical Role"
+author: 'Wesley S. Burr-- <a href="http://www.trentu.ca/math/">Trent University</a> <br> <a href="http://github.com/wesleyburr"><i class="fa fa-github fa-fw"></i>&nbsp; wsburr</a><br> <a href="http://twitter.com/wsburr"> <i class="fa fa-twitter fa-fw"></i>&nbsp; @wsburr</a><br> <a href="mailto:wesleyburr@trentu.ca"><i class="fa fa-paper-plane fa-fw"></i>&nbsp; wesleyburr@trentu.ca</a><br><br/>'
+date: 2021-05-08, 10:00-10:30
+output:
+  xaringan::moon_reader:
+    chakra: remark-latest.min.js
+    lib_dir: libs
+    nature:
+      highlightStyle: tomorrow-night-bright
+      highlightLines: true
+      highlightLanguage: r
+    includes:
+      in_header: header.html
+    countIncrementalSlides: false
+    css: xaringan-themer.css
+    transition: fade
+---
+
+# Reproducibility
+
+```{r include=FALSE}
+library(ggplot2)
+filter <- dplyr::filter
+knitr::opts_chunk$set(warning=FALSE, message=FALSE, fig.width=10.5, fig.height=4, 
+  comment=NA, rows.print=16)
+#theme_set(theme_gray(base_size = 24))
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE, eval = FALSE}
+library(xaringanthemer)
+style_mono_accent(
+  base_color = "#1c5253",
+  header_font_google = google_font("Josefin Sans"),
+  text_font_google   = google_font("Montserrat", "300", "300i"),
+  code_font_google   = google_font("Fira Mono")
+)
+```
+---
+
+class: inverse
+
+## Reproducibility 
+
+Today, I am specifically interested in discussing reproducible research *methods*, particularly with 
+respect to data gathering, manipulation, and analysis.
+
+---
+
+class: inverse
+
+## Reproducible Research Methods
+
+First published work I am aware of that discusses the specific framework I am
+thinking of (computational reproducibility) is 1990-92, J. Claerbout 
+at Stanford:
+
+<br/>
+
+J. Claerbout, M. Karrenbach, *Electronic documents give reproducible research a new meaning*, in Proceedings of the 62nd Annual International Meeting of the Society of Exploration Geophysics, New Orleans, USA, 25 to 29 October 1992.
+
+---
+
+class: inverse
+
+## Reproducible Research Methods
+
+Some quotes:
+
+<br/>
+- a revolution in education and technology transfer follows from the marriage of word processing and software command scripts
+
+--
+
+- researchers ... can reproduce their own research results a year or more later by "pressing a single button"
+
+--
+
+- Our basic goal is reproducible research. The electronic document is our means to this end
+
+<br/>
+https://doi.org/10.1190/1.1822162
+
+---
+
+
+
+## Definition
+
+<br/>
+... the idea that scientific results should be documented in such a way that their deduction is fully transparent. This requires a detailed description of the methods used to obtain the data and making the full dataset and the code to calculate the results easily accessible.
+**This is the essential part of open science.**
+
+<br/>
+*Wikipedia, https://en.wikipedia.org/wiki/Reproducibility*
+
+---
+
+
+
+## Some Necessary Components
+
+To make any research project computationally reproducible
+
+- all data and files clearly: separated; labelled; documented
+    
+--
+
+- all operations should be automated as much as practicable, avoiding manual intervention 
+
+--
+
+- workflow designed as a sequence of steps (**scripts!**), combined so intermediate outputs from one step directly feed in as inputs to the next
+
+--
+
+- version control should be used
+
+---
+
+## Workflow Includes
+
+- data acquisition
+
+--
+
+- data processing
+    - entry
+    - manipulation
+    - filtering
+
+--
+
+- data analysis
+    - computation of statistics
+    - figures
+    - model-fitting (including interim steps!) 
+    - linear flow, resist urge to modify earlier steps
+
+---
+
+class: inverse
+
+## Tips for Getting Started in Small Ways
+
+- force yourself to organize your class materials in a coherent manner (downloaded lectures, assignments, notes)
+
+--
+
+- save all of your software work (scripts, examples, rough work for assignments)
+
+--
+
+- always be learning - tons of resources
+
+---
+
+class: inverse
+
+## Inspiration
+
+File organization and naming
+are powerful weapons against chaos.
+- Jenny Bryan
+
+---
+
+class: inverse
+
+## Inspiration
+
+Your closest collaborator is you six months ago,
+but you don’t reply to emails.
+- Mark Holder
+
+
+---
+
+class: inverse
+
+## Basic Principles
+
+Basic principles
+
+Step 1: slow down and document.<br/>
+Step 2: have sympathy for your future self.<br/>
+Step 3: have a system.<br/>
+
+---
+
+# R Markdown
+
+---
+
+class: inverse
+
+## Context and Motivation
+
+When doing lab work, you:
+
+- use notebooks to
+
+--
+
+    - organize methods
+    - organize and record results
+    - jot down conclusions
+
+--
+
+- convert these notebooks into Methods sections for lab reports or scientific papers
+
+---
+
+class: inverse
+
+## Context and Motivation
+
+When working computationally, you *should* do the same thing!
+
+- data provenance
+
+--
+
+- detailed log of workflow
+
+--
+
+- tools used at each step
+
+--
+
+- parameters ("researcher degrees of freedom") recorded
+
+--
+
+- versioning for software
+
+---
+
+## The Computational Notebook (with Markdown!)
+
+Now, for both R and Python, **notebooks** exist. These are computational
+representations of the traditional lab notebook, freely mixing:
+
+---
+
+## The Computational Notebook (with Markdown!)
+
+Now, for both R and Python, **notebooks** exist. These are computational
+representations of the traditional lab notebook, freely mixing:
+
+- text
+
+--
+
+- code (replaces math)
+
+--
+
+- figures (replaces diagrams)
+
+--
+
+- analysis
+
+--
+
+- results
+
+Additionally, when run as a document instead of an interactive notebook,
+the framework is set up to **force** reproducibility through
+the action of **knitting**.
+
+---
+
+background-image: url("figure/rmd_background.png")
+background-position: center
+background-size: contain
+
+---
+
+## Advantages
+
+```{r}
+x <- rnorm(100)
+y <- rnorm(100)
+m <- mean(x)
+m
+```
+
+The code and results are right there!
+
+---
+
+
+
+## Advantages
+
+```{r}
+plot(x = x, y = y)
+```
+
+Figures and graphs are right there, with their code!
+
+---
+
+
+
+## Advantages
+
+```{r}
+mod <- lm(y ~ x, data = data.frame(x, y))
+plot(x = x, y = y)
+abline(mod, col = "red")
+```
+
+Run models, syntax is immediate, researcher decisions are clear.
+
+---
+
+class: inverse
+
+## Advantages
+
+- forces you to think about workflow
+
+--
+
+- integrates all decisions into one place
+
+--
+
+- teaches coding skills by "stealth" (osmosis: template, scaffold, expose)
+
+--
+
+- is actually how most researchers work: no baby software or apps
+
+--
+
+- infinitely extensible
+
+--
+
+- supported by the R ecosystem and CRAN
+
+---
+
+class: inverse
+
+## Musings
+
+- Bias: I'm a statistician, and work with (and write) software every day of my professional life
+
+--
+
+- However ...
+    - software is [eating the world!](https://a16z.com/2011/08/20/why-software-is-eating-the-world/)
+    - we **owe** it to ourselves to adapt to this system
+    - even if it's uncomfortable for us, and we're not "computer people", this doesn't cut it!
+    - the **current** best practices will not be the same in 5, 10, 20 years -- you have to be prepared for lifelong learning
+
+---
+
+layout: false
+class: middle, inverse
+
+<center>
+<a href="http://www.trentu.ca/math/"><img src="figure/trent.png" style="width: 200px;"/></a> &emsp;&emsp;
+<a href="https://creativecommons.org/licenses/by/4.0/"><img src="figure/cc.png" style="width: 200px;"/></a>
+</center>
+
+<br/>
+
+- Contact me: [Email](mailto:wesleyburr@trentu.ca) or [Twitter](https://twitter.com/wsburr)
+- Slides created via the R package [xaringan](https://github.com/yihui/xaringan) by Yihui Xie
+- Slides available at [GitHub](https://wesleyburr.github.io/TeachingStatsPsych/#1)
+<br/>

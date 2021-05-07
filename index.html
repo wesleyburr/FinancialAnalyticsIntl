@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Reproducibility in Science: A Statistical Role</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Wesley S. Burr– Trent University     wsburr     @wsburr    wesleyburr@trentu.ca  " />
+    <script src="libs/header-attrs-2.7/header-attrs.js"></script>
+    <script src="https://use.fontawesome.com/5235085b15.js"></script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Reproducibility in Science: A Statistical Role
+### Wesley S. Burr– <a href="http://www.trentu.ca/math/">Trent University</a> <br> <a href="http://github.com/wesleyburr"><i class="fa fa-github fa-fw"></i>  wsburr</a><br> <a href="http://twitter.com/wsburr"> <i class="fa fa-twitter fa-fw"></i>  <span class="citation">@wsburr</span></a><br> <a href="mailto:wesleyburr@trentu.ca"><i class="fa fa-paper-plane fa-fw"></i>  wesleyburr@trentu.ca</a><br><br/>
+### 2021-05-08, 10:00-10:30
+
+---
+
+
+# Reproducibility
+
+
+
+
+---
+
+class: inverse
+
+## Reproducibility 
+
+Today, I am specifically interested in discussing reproducible research *methods*, particularly with 
+respect to data gathering, manipulation, and analysis.
+
+---
+
+class: inverse
+
+## Reproducible Research Methods
+
+First published work I am aware of that discusses the specific framework I am
+thinking of (computational reproducibility) is 1990-92, J. Claerbout 
+at Stanford:
+
+&lt;br/&gt;
+
+J. Claerbout, M. Karrenbach, *Electronic documents give reproducible research a new meaning*, in Proceedings of the 62nd Annual International Meeting of the Society of Exploration Geophysics, New Orleans, USA, 25 to 29 October 1992.
+
+---
+
+class: inverse
+
+## Reproducible Research Methods
+
+Some quotes:
+
+&lt;br/&gt;
+- a revolution in education and technology transfer follows from the marriage of word processing and software command scripts
+
+--
+
+- researchers ... can reproduce their own research results a year or more later by "pressing a single button"
+
+--
+
+- Our basic goal is reproducible research. The electronic document is our means to this end
+
+&lt;br/&gt;
+https://doi.org/10.1190/1.1822162
+
+---
+
+
+
+## Definition
+
+&lt;br/&gt;
+... the idea that scientific results should be documented in such a way that their deduction is fully transparent. This requires a detailed description of the methods used to obtain the data and making the full dataset and the code to calculate the results easily accessible.
+**This is the essential part of open science.**
+
+&lt;br/&gt;
+*Wikipedia, https://en.wikipedia.org/wiki/Reproducibility*
+
+---
+
+
+
+## Some Necessary Components
+
+To make any research project computationally reproducible
+
+- all data and files clearly: separated; labelled; documented
+    
+--
+
+- all operations should be automated as much as practicable, avoiding manual intervention 
+
+--
+
+- workflow designed as a sequence of steps (**scripts!**), combined so intermediate outputs from one step directly feed in as inputs to the next
+
+--
+
+- version control should be used
+
+---
+
+## Workflow Includes
+
+- data acquisition
+
+--
+
+- data processing
+    - entry
+    - manipulation
+    - filtering
+
+--
+
+- data analysis
+    - computation of statistics
+    - figures
+    - model-fitting (including interim steps!) 
+    - linear flow, resist urge to modify earlier steps
+
+---
+
+class: inverse
+
+## Tips for Getting Started in Small Ways
+
+- force yourself to organize your class materials in a coherent manner (downloaded lectures, assignments, notes)
+
+--
+
+- save all of your software work (scripts, examples, rough work for assignments)
+
+--
+
+- always be learning - tons of resources
+
+---
+
+class: inverse
+
+## Inspiration
+
+File organization and naming
+are powerful weapons against chaos.
+- Jenny Bryan
+
+---
+
+class: inverse
+
+## Inspiration
+
+Your closest collaborator is you six months ago,
+but you don’t reply to emails.
+- Mark Holder
+
+
+---
+
+class: inverse
+
+## Basic Principles
+
+Basic principles
+
+Step 1: slow down and document.&lt;br/&gt;
+Step 2: have sympathy for your future self.&lt;br/&gt;
+Step 3: have a system.&lt;br/&gt;
+
+---
+
+# R Markdown
+
+---
+
+class: inverse
+
+## Context and Motivation
+
+When doing lab work, you:
+
+- use notebooks to
+
+--
+
+    - organize methods
+    - organize and record results
+    - jot down conclusions
+
+--
+
+- convert these notebooks into Methods sections for lab reports or scientific papers
+
+---
+
+class: inverse
+
+## Context and Motivation
+
+When working computationally, you *should* do the same thing!
+
+- data provenance
+
+--
+
+- detailed log of workflow
+
+--
+
+- tools used at each step
+
+--
+
+- parameters ("researcher degrees of freedom") recorded
+
+--
+
+- versioning for software
+
+---
+
+## The Computational Notebook (with Markdown!)
+
+Now, for both R and Python, **notebooks** exist. These are computational
+representations of the traditional lab notebook, freely mixing:
+
+---
+
+## The Computational Notebook (with Markdown!)
+
+Now, for both R and Python, **notebooks** exist. These are computational
+representations of the traditional lab notebook, freely mixing:
+
+- text
+
+--
+
+- code (replaces math)
+
+--
+
+- figures (replaces diagrams)
+
+--
+
+- analysis
+
+--
+
+- results
+
+Additionally, when run as a document instead of an interactive notebook,
+the framework is set up to **force** reproducibility through
+the action of **knitting**.
+
+---
+
+background-image: url("figure/rmd_background.png")
+background-position: center
+background-size: contain
+
+---
+
+## Advantages
+
+
+```r
+x &lt;- rnorm(100)
+y &lt;- rnorm(100)
+m &lt;- mean(x)
+m
+```
+
+```
+[1] 0.2121041
+```
+
+The code and results are right there!
+
+---
+
+
+
+## Advantages
+
+
+```r
+plot(x = x, y = y)
+```
+
+![](index_files/figure-html/unnamed-chunk-3-1.png)&lt;!-- --&gt;
+
+Figures and graphs are right there, with their code!
+
+---
+
+
+
+## Advantages
+
+
+```r
+mod &lt;- lm(y ~ x, data = data.frame(x, y))
+plot(x = x, y = y)
+abline(mod, col = "red")
+```
+
+![](index_files/figure-html/unnamed-chunk-4-1.png)&lt;!-- --&gt;
+
+Run models, syntax is immediate, researcher decisions are clear.
+
+---
+
+class: inverse
+
+## Advantages
+
+- forces you to think about workflow
+
+--
+
+- integrates all decisions into one place
+
+--
+
+- teaches coding skills by "stealth" (osmosis: template, scaffold, expose)
+
+--
+
+- is actually how most researchers work: no baby software or apps
+
+--
+
+- infinitely extensible
+
+--
+
+- supported by the R ecosystem and CRAN
+
+---
+
+class: inverse
+
+## Musings
+
+- Bias: I'm a statistician, and work with (and write) software every day of my professional life
+
+--
+
+- However ...
+    - software is [eating the world!](https://a16z.com/2011/08/20/why-software-is-eating-the-world/)
+    - we **owe** it to ourselves to adapt to this system
+    - even if it's uncomfortable for us, and we're not "computer people", this doesn't cut it!
+    - the **current** best practices will not be the same in 5, 10, 20 years -- you have to be prepared for lifelong learning
+
+---
+
+layout: false
+class: middle, inverse
+
+&lt;center&gt;
+&lt;a href="http://www.trentu.ca/math/"&gt;&lt;img src="figure/trent.png" style="width: 200px;"/&gt;&lt;/a&gt; &amp;emsp;&amp;emsp;
+&lt;a href="https://creativecommons.org/licenses/by/4.0/"&gt;&lt;img src="figure/cc.png" style="width: 200px;"/&gt;&lt;/a&gt;
+&lt;/center&gt;
+
+&lt;br/&gt;
+
+- Contact me: [Email](mailto:wesleyburr@trentu.ca) or [Twitter](https://twitter.com/wsburr)
+- Slides created via the R package [xaringan](https://github.com/yihui/xaringan) by Yihui Xie
+- Slides available at [GitHub](https://wesleyburr.github.io/TeachingStatsPsych/#1)
+&lt;br/&gt;
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "tomorrow-night-bright",
+"highlightLines": true,
+"highlightLanguage": "r"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
