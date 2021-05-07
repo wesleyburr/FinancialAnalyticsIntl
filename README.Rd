@@ -1,6 +1,3 @@
-# Teaching Statistics in Psychology Conference
+# Trent International - Financial Analytics Mini-Lecture
 
-https://sites.google.com/view/teachingstatistics2021/home
-
-Workshop/Talk on Day 2 (May 6) - Teaching Reproducibility in Intro Stats
-
+Short (20-minute) talk given to potential international students interested in the Financial Analytics / Financial Science major at Trent University. Topic is reproducibility (specifically: computational reproducibility) in science.
