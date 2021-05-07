@@ -375,5 +375,5 @@ class: middle, inverse
 
 - Contact me: [Email](mailto:wesleyburr@trentu.ca) or [Twitter](https://twitter.com/wsburr)
 - Slides created via the R package [xaringan](https://github.com/yihui/xaringan) by Yihui Xie
-- Slides available at [GitHub](https://wesleyburr.github.io/TeachingStatsPsych/#1)
+- Slides available at [GitHub](https://wesleyburr.github.io/FinancialAnalyticsIntl/)
 <br/>
