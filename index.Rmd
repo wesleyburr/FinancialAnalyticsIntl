@@ -359,7 +359,7 @@ class: inverse
     - software is [eating the world!](https://a16z.com/2011/08/20/why-software-is-eating-the-world/)
     - we **owe** it to ourselves to adapt to this system
     - even if it's uncomfortable for us, and we're not "computer people", this doesn't cut it!
-    - the **current** best practices will not be the same in 5, 10, 20 years -- you have to be prepared for lifelong learning
+    - the **current** best practices will not be the same in 5, 10, 20 years - you have to be prepared for lifelong learning
 
 ---
 
